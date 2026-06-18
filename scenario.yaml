@@ -2,5 +2,4 @@ apiVersion: ai.sap.com/v1alpha1
 kind: Scenario
 metadata:
   name: hello-api
-spec:
   description: Hello API Scenario

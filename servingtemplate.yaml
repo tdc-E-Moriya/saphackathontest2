@@ -4,6 +4,8 @@ metadata:
   name: hello-api-template
 
 spec:
+  scenario: hello-api
+
   inputs: {}
 
   template:
