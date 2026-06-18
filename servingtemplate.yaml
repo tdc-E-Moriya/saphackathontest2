@@ -2,12 +2,16 @@ apiVersion: ai.sap.com/v1alpha1
 kind: ServingTemplate
 metadata:
   name: hello-api-template
+
 spec:
+  inputs: {}
+
   template:
     metadata:
       annotations:
         autoscaling.knative.dev/minScale: "1"
         autoscaling.knative.dev/maxScale: "2"
+
     spec:
       containers:
         - name: hello-api
