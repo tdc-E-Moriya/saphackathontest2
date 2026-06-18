@@ -33,4 +33,6 @@ spec:
         - name: hello-api
           image: {{inputs.parameters.image}}
           ports:
-          - containerPort: 8000
+          - ports:
+            - containerPort: 8000
+              protocol: TCP
