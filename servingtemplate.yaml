@@ -30,9 +30,8 @@ spec:
     spec: |
       predictor:
         containers:
-        - name: hello-api
+        - name: kserve-container
           image: {{inputs.parameters.image}}
           ports:
-          - ports:
-            - containerPort: 8000
-              protocol: TCP
+          - containerPort: 8000
+            protocol: TCP
