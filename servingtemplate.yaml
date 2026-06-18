@@ -3,17 +3,34 @@ kind: ServingTemplate
 
 metadata:
   name: hello-api-template
+
+  annotations:
+    scenarios.ai.sap.com/name: "hello-api"
+    scenarios.ai.sap.com/description: "Hello API Scenario"
+    executables.ai.sap.com/name: "hello-api-exec"
+    executables.ai.sap.com/description: "FastAPI Hello World"
+
   labels:
-    ai.sap.com/resource-group: default
+    scenarios.ai.sap.com/id: "hello-api"
+    ai.sap.com/version: "1.0.0"
 
 spec:
-  scenario: hello-api
+  inputs:
+    parameters:
+      - name: image
+        type: string
+        default: ghcr.io/tdc-e-moriya/hello-api:latest
 
   template:
-    spec:
-      containers:
-      - name: hello-api
-        image: ghcr.io/tdc-e-moriya/hello-api:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8000
+    apiVersion: serving.kserve.io/v1beta1
+    metadata:
+      labels: |
+        ai.sap.com/resourcePlan: starter
+
+    spec: |
+      predictor:
+        containers:
+        - name: hello-api
+          image: {{inputs.parameters.image}}
+          ports:
+          - containerPort: 8000

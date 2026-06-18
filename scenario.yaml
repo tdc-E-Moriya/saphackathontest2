@@ -1,7 +1,0 @@
-apiVersion: ai.sap.com/v1alpha1
-kind: Scenario
-
-metadata:
-  name: hello-api
-  labels:
-    ai.sap.com/resource-group: default
